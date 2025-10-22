@@ -6,39 +6,44 @@ import React, { useState } from "react";
 //create your first component
 const Home = () => {
 
+
 	const [inputValue, setInputValue] = useState("");
-	const [todos, setTodos] = useState([]);
+	const [Lista, setLista] = useState([
+		"Make the bed",
+		"Walk th dog",
+		"Pay taxes",
+		"Go on vacation"]);
 	return (
 		<div className="container">
-			<h1>My Todos{inputValue}</h1>
+			<h1>Mi Lista</h1>
 			<ul>
 				<li>
 					<input type="text"
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}
-						onKeyPress={
+						onKeyUp={
 							(e) => {
 								if (e.key === "Enter") {
-									setTodos(todos.concat(inputValue));
+									setLista(Lista.concat(inputValue)); setInputValue("")
 								}
 							}
 						}
-						placeholder="What do you need to do?" />
+						placeholder="Escribir la lista?" />
+
 				</li>
-				{todos.map((item, index) => (
+				{Lista.map((item, index) => (
+
 
 					<li>
-						{item} <i className="fa-solid fa-trash" onClick={() => setTodos(todos.filter((t, currentIndex) => index != currentIndex))}></i>
+						{item}  {""}
+						<i className="fa-solid fa-trash" onClick={() => setLista(Lista.filter((t, currentIndex) => index != currentIndex))}></i>
 					</li>
 
 				))}
-				<li>Make the bed <i className="fa-solid fa-trash" onClick={() => setTodos(todos.filter((t, currentIndex) => index != currentIndex))}></i></li>
-				<li>Walk the dog <i className="fa-solid fa-trash"  onClick={() => setTodos(todos.filter((t, currentIndex) => index != currentIndex))}></i></li>
-				<li>Pay taxes <i className="fa-solid fa-trash"  onClick={() => setTodos(todos.filter((t, currentIndex) => index != currentIndex))}></i></li>
-				<li>Go on vacation <i className="fa-solid fa-trash"  onClick={() => setTodos(todos.filter((t, currentIndex) => index != currentIndex))}></i></li>
+
 
 			</ul>
-			<div>23 taks</div>
+			<div>{Lista.length}taks</div>
 		</div>
 	);
 };
