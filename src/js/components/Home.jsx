@@ -14,7 +14,7 @@ const Home = () => {
 		"Pay taxes",
 		"Go on vacation"]);
 	return (
-		<div className="container">
+		<div className="container" >
 			<h1>Mi Lista</h1>
 			<ul>
 				<li>
@@ -32,7 +32,6 @@ const Home = () => {
 
 				</li>
 				{Lista.map((item, index) => (
-
 
 					<li>
 						{item}  {""}
